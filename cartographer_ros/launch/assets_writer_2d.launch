@@ -1,0 +1,23 @@
+<!--
+  Author: Bharath Sankaran
+  
+  file: assests_writer_3d.launch
+  author: Bharath Sankaran
+  date: March 2019
+-->
+<launch>
+  <arg name="urdf_path" />
+  <arg name="bag_filenames" />
+  <arg name="pose_graph_filename" />
+  <arg name="output_path" />
+
+  <node name="cartographer_assets_writer" pkg="cartographer_ros" required="true" type="cartographer_assets_writer"
+        args="-configuration_directory $(find cartographer_ros)/configuration_files
+              -configuration_basename assets_writer_2d.lua
+              -urdf_filename $(arg urdf_path)
+              -bag_filenames $(arg bag_filenames)
+              -pose_graph_filename $(arg pose_graph_filename)
+              -output_file_prefix $(arg output_path)/"
+      output="screen">
+  </node>
+</launch>
